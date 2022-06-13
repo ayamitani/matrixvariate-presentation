@@ -1,0 +1,196 @@
+---
+title: "Matrix-variate regression for multilevel data"
+subtitle: "DSI Seed Funding for Methodologists"  
+author: 
+  - "Aya Mitani"
+  - "Dalla Lana School of Public Health"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+<style type="text/css">
+.remark-slide-content {
+    font-size: 26px;
+    padding: 1em 2em 1em 2em;
+}
+</style>
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  #fig.width=9, fig.height=3.5, fig.retina=3,
+  fig.retina = 3,
+  #out.height = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+library(here)
+library(emo)
+library(tidyverse)
+library(knitr)
+library(xtable)
+library(texreg)
+library(sjPlot)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#002A5C",
+  text_bold_color = "#008BB0",
+  secondary_color = "#008BB0",
+  inverse_header_color = "#FFFFFF"
+)
+```
+
+
+# Traditional regression model
+
+The outcome $Y_i$ for person $i$ is **univariate**
+
+$$
+\boldsymbol{Y} = \boldsymbol{X\beta} + \boldsymbol{\epsilon}
+$$
+--
+
+\begin{equation*}
+\left(\begin{array}{c} 
+Y_{1}\\
+Y_{2}\\
+\vdots \\
+Y_{n}
+\end{array}\right)
+=
+\left(\begin{array}{cccc} 
+1 & X_{11} & ... & X_{1p}\\
+1 & X_{21} & ... & X_{2p}\\
+\vdots & \vdots & \ddots & \vdots \\
+1 & X_{n1} & ... & X_{np}  
+\end{array}\right)
+\left(\begin{array}{c} 
+\beta_{0}\\
+\beta_{1}\\
+\vdots \\
+\beta_{p}
+\end{array}\right)
++
+\left(\begin{array}{c} 
+\varepsilon_{1}\\
+\varepsilon_{2}\\
+\vdots \\
+\varepsilon_{n}
+\end{array}\right)
+\end{equation*}
+
+--
+$$
+\boldsymbol{\hat{\beta}}=(\boldsymbol{X}^{T}\boldsymbol{X})^{-1}\boldsymbol{X}^{T}\boldsymbol{Y}
+$$
+
+
+---
+# Matrix-variate outcome
+
+Sometimes each person $i$ might contribute **multiple outcomes** represented in a **matrix**
+
+\begin{equation*}
+\boldsymbol{Y}_i 
+=
+\left(\begin{array}{cccc} 
+y_{11} & y_{12} & ... & y_{1m}\\
+y_{21} & y_{22} & ... & y_{2m}\\
+\vdots & \vdots & \ddots & \vdots \\
+y_{r1} & y_{r2} & ... & y_{rm}  
+\end{array}\right)
+\end{equation*}
+
+For example,
+- 
+
+---
+# Matrix-variate regression
+- Then, rather than transforming each $\boldsymbol{Y}_i$ into a vector, it may be more straightforward to model $\boldsymbol{Y}_1$, $\boldsymbol{Y}_2$, ..., $\boldsymbol{Y}_n$ as matrices
+<br>
+--
+
+- The matrix-variate regression of $\boldsymbol{Y} (r \times m)$ on $\boldsymbol{X} (p1 \times p2)$ is
+<br>
+--
+
+\begin{equation}
+\mathbf{Y = \mu + \beta_1 X \beta_2^T + \epsilon}
+\end{equation}
+where 
+  - $\mu (r \times m)$ is...
+  - $\beta_1(r\times p_1)$ and $\beta_2 (m \times p2)$ are row and column coefficient matrices
+  - $\epsilon(r\times m)$ is a matrix of errors
+%%% CITE DI AND COOK %%%
+
+---
+# Example: Periodontal disease
+.pull-left[
++ Periodontitis is the **6**th most prevalent disease in the world and a major cause of tooth loss in older adults
++ In Canada...
+  - 16% of adults have periodontitis
+  - 4% of adults have severe periodontitis
+]
+.pull-right[
+![https://doi.org/10.1289/ehp.0800312](image/perio.jpg)
+]
+
+---
+# Two measurements collected on each tooth
+
+.pull-left[
+![https://doi.org/10.1289/ehp.0800312](image/tooth.jpg)
+]
+.pull-right[
+- AAP/CDC definition of periodontitis
+  <!-- + Mild: 2+ sites with **CAL** $\geq$ 3mm, and 2+ sites with **PD** $\geq$ 4mm or 1 site with **PD** $\geq$ 5mm -->
+  <!-- + Moderate: 2+ sites with **CAL** $\geq$ 4mm, or 2+ sites with **PD** $\geq$ 5mm  -->
+  + Severe: two or more sites with **CAL** $\geq$ 6mm, and one or more site with **PD** $\geq$ 5mm
+- Many researchers are also interested in *jointly* modeling **CAL** and **PD** (%%% CITE KAYE AND MITANI %%%)
+]
+
+
+
+---
+# Matrix-variate model for CAL and PD
+
+%%% WRITE OUT THE MODEL HERE %%%
+
+---
+# Predicted values 
+
+---
+# Correlation plot
+
+---
+# Methodology extensions
+
+- Longitudinal data %%CITE ALL%%
+- Non-normal errors 
+- Missing tooth
+
+---
+# Possible applications
+
+---
+# Advantages of matrix-variate regression
+
+---
+# Why is matrix-variate regression not popular?
+
+---
+# Let's try!
+
+

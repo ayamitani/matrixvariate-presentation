@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Matrix-variate regression for multilevel data</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Aya Mitani" />
+    <meta name="author" content="Dalla Lana School of Public Health" />
+    <meta name="date" content="2022-06-12" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Matrix-variate regression for multilevel data
+## DSI Seed Funding for Methodologists
+### Aya Mitani
+### Dalla Lana School of Public Health
+### 2022-06-12
+
+---
+
+&lt;style type="text/css"&gt;
+.remark-slide-content {
+    font-size: 26px;
+    padding: 1em 2em 1em 2em;
+}
+&lt;/style&gt;
+
+
+
+
+
+# Traditional regression model
+
+The outcome `\(Y_i\)` for person `\(i\)` is **univariate**
+
+$$
+\boldsymbol{Y} = \boldsymbol{X\beta} + \boldsymbol{\epsilon}
+$$
+--
+
+`\begin{equation*}
+\left(\begin{array}{c} 
+Y_{1}\\
+Y_{2}\\
+\vdots \\
+Y_{n}
+\end{array}\right)
+=
+\left(\begin{array}{cccc} 
+1 &amp; X_{11} &amp; ... &amp; X_{1p}\\
+1 &amp; X_{21} &amp; ... &amp; X_{2p}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; X_{n1} &amp; ... &amp; X_{np}  
+\end{array}\right)
+\left(\begin{array}{c} 
+\beta_{0}\\
+\beta_{1}\\
+\vdots \\
+\beta_{p}
+\end{array}\right)
++
+\left(\begin{array}{c} 
+\varepsilon_{1}\\
+\varepsilon_{2}\\
+\vdots \\
+\varepsilon_{n}
+\end{array}\right)
+\end{equation*}`
+
+--
+$$
+\boldsymbol{\hat{\beta}}=(\boldsymbol{X}^{T}\boldsymbol{X})^{-1}\boldsymbol{X}^{T}\boldsymbol{Y}
+$$
+
+
+---
+# Matrix-variate outcome
+
+Sometimes each person `\(i\)` might contribute **multiple outcomes** represented in a **matrix**
+
+`\begin{equation*}
+\boldsymbol{Y}_i 
+=
+\left(\begin{array}{cccc} 
+y_{11} &amp; y_{12} &amp; ... &amp; y_{1m}\\
+y_{21} &amp; y_{22} &amp; ... &amp; y_{2m}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+y_{r1} &amp; y_{r2} &amp; ... &amp; y_{rm}  
+\end{array}\right)
+\end{equation*}`
+
+For example,
+- 
+
+---
+# Matrix-variate regression
+- Then, rather than transforming each `\(\boldsymbol{Y}_i\)` into a vector, it may be more straightforward to model `\(\boldsymbol{Y}_1\)`, `\(\boldsymbol{Y}_2\)`, ..., `\(\boldsymbol{Y}_n\)` as matrices
+&lt;br&gt;
+--
+
+- The matrix-variate regression of `\(\boldsymbol{Y} (r \times m)\)` on `\(\boldsymbol{X} (p1 \times p2)\)` is
+&lt;br&gt;
+--
+
+`\begin{equation}
+\mathbf{Y = \mu + \beta_1 X \beta_2^T + \epsilon}
+\end{equation}`
+where 
+  - `\(\mu (r \times m)\)` is...
+  - `\(\beta_1(r\times p_1)\)` and `\(\beta_2 (m \times p2)\)` are row and column coefficient matrices
+  - `\(\epsilon(r\times m)\)` is a matrix of errors
+%%% CITE DI AND COOK %%%
+
+---
+# Example: Periodontal disease
+.pull-left[
++ Periodontitis is the **6**th most prevalent disease in the world and a major cause of tooth loss in older adults
++ In Canada...
+  - 16% of Canadian adults have periodontitis
+  - 4% of Canadian adults have severe periodontitis
+]
+.pull-right[
+![https://doi.org/10.1289/ehp.0800312](image/perio.jpg)
+]
+
+---
+# Two measurements collected on each tooth
+
+.pull-left[
+![https://doi.org/10.1289/ehp.0800312](image/tooth.jpg)
+]
+.pull-right[
+- AAP/CDC definition of periodontitis
+  &lt;!-- + Mild: 2+ sites with **CAL** `\(\geq\)` 3mm, and 2+ sites with **PD** `\(\geq\)` 4mm or 1 site with **PD** `\(\geq\)` 5mm --&gt;
+  &lt;!-- + Moderate: 2+ sites with **CAL** `\(\geq\)` 4mm, or 2+ sites with **PD** `\(\geq\)` 5mm  --&gt;
+  + Severe: two or more sites with **CAL** `\(\geq\)` 6mm, and one or more site with **PD** `\(\geq\)` 5mm
+- Many researchers are also interested in *jointly* modeling **CAL** and **PD** (%%% CITE KAYE AND MITANI %%%)
+]
+
+
+
+---
+# Matrix-variate model for CAL and PD
+
+%%% WRITE OUT THE MODEL HERE %%%
+
+---
+# Predicted values 
+
+---
+# Correlation plot
+
+---
+# Methodology extensions
+
+- Longitudinal data
+- Non-normal errors
+- Missing tooth
+
+---
+# Possible applications
+
+---
+# Advantages of matrix-variate regression
+
+---
+# Why is matrix-variate regression unpopular?
+
+---
+# Let's try!
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

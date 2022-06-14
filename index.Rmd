@@ -7,14 +7,16 @@ author:
 date: '`r Sys.Date()`'
 output:
   xaringan::moon_reader:
-    css: xaringan-themer.css
+    css: adjusted-themer.css
     nature:
       slideNumberFormat: "%current%"
       highlightStyle: github
       highlightLines: true
       ratio: 16:9
       countIncrementalSlides: true
+    seal: False
 ---
+
 <style type="text/css">
 .remark-slide-content {
     font-size: 26px;
@@ -51,6 +53,33 @@ style_duo_accent(
   inverse_header_color = "#FFFFFF"
 )
 ```
+
+
+.center[
+# Matrix-variate regression for multilevel data
+
+## DSI Seed Funding for Methodologists  
+
+### Aya Mitani
+
+### Dalla Lana School of Public Health
+
+### `r Sys.Date()`
+]
+
+.pull-left[.center[
+```{r, echo = FALSE, out.width=500}
+knitr::include_graphics("image/SigDallaLana.jpg")
+```
+]]
+
+.pull-right[.center[
+```{r, echo = FALSE, out.width=300}
+knitr::include_graphics("image/UTDL003_Dalla-Lana_Logo_HRZ_RGB.png")
+```
+]]
+
+---
 
 
 # Traditional regression model
@@ -98,6 +127,7 @@ $$
 
 
 ---
+
 # Matrix-variate outcome
 
 Sometimes each person $i$ might contribute **multiple outcomes** represented in a **matrix**
@@ -117,6 +147,7 @@ For example,
 - 
 
 ---
+
 # Matrix-variate regression
 - Then, rather than transforming each $\boldsymbol{Y}_i$ into a vector, it may be more straightforward to model $\boldsymbol{Y}_1$, $\boldsymbol{Y}_2$, ..., $\boldsymbol{Y}_n$ as matrices
 <br>
@@ -137,7 +168,10 @@ where
 .footnote[Ding and Cook. [Matrix variate regressions and envelope models](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247). J. R. Statist. Soc. B. (2018)]
 
 ---
+
+
 # Example: Periodontal disease
+
 .pull-left[
 + Periodontitis is the **6**th most prevalent disease in the world and a major cause of tooth loss in older adults
 
@@ -154,6 +188,8 @@ knitr::include_graphics("image/perio.jpg")
 ]]
 
 ---
+
+
 # Two measurements collected on each tooth
 
 .pull-left[.center[
@@ -178,12 +214,57 @@ Mitani et al. [Marginal analysis of multiple outcomes with informative cluster s
 
 
 ---
+
+
 # Matrix-variate model for AL and PD
 
-%%% WRITE OUT THE MODEL HERE %%%
+For subject 1,
+
+\begin{equation*}
+\left(\begin{array}{cc} 
+3 & 2 \\
+3 & 3 \\
+4 & 3 \\
+\vdots & \vdots \\
+3 & 2 \\
+3 & 2 \\
+4 & 3 
+\end{array}\right) = 
+\left(\begin{array}{cc} 
+3.37 & 2.93  \\
+3.12 & 2.88  \\
+2.54 & 2.10  \\
+\vdots & \vdots  \\
+2.80 & 2.33  \\
+3.35 & 3.01  \\
+3.79 & 3.27 
+\end{array}\right) + 
+\left(\begin{array}{cc} 
+\beta_{1\_11}& \beta_{1\_12}  \\
+\beta_{1\_21}& \beta_{1\_22}  \\
+\beta_{1\_31}& \beta_{1\_32}  \\
+\vdots & \vdots  \\
+\beta_{1\_261}& \beta_{1\_262}  \\
+\beta_{1\_271}& \beta_{1\_272}  \\
+\beta_{1\_281}& \beta_{1\_282} 
+\end{array}\right)
+\left(\begin{array}{c} 
+40 \\
+1
+\end{array}\right)
+\left(\begin{array}{c} 
+\beta_{2\_11}\\
+\beta_{2\_21} 
+\end{array}\right)^T +
+\epsilon
+\end{equation*}
 
 ---
-# Estimated correlation between teeth
+
+
+# Estimated correlation between teeth 
+
+
 .pull-left[.center[ 
 ```{r, echo = FALSE, out.width=250, fig.cap="Teeth numbering system"}
 knitr::include_graphics("image/teethnumbering.png")
@@ -194,25 +275,34 @@ knitr::include_graphics("image/teethnumbering.png")
 knitr::include_graphics("image/mvr_row.png")
 ```
 ]]
-.footnote[[https://en.wikipedia.org/wiki/Universal_Numbering_System](https://en.wikipedia.org/wiki/Universal_Numbering_System)]
+
+.footnote[https://en.wikipedia.org/wiki/Universal_Numbering_System](https://en.wikipedia.org/wiki/Universal_Numbering_System)
 
 ---
+
+
 # Estimated correlation between AL and PD
 
 
 ---
+
+
 # Estimated mean values for PD
 ```{r, echo = FALSE, out.width=750}
 knitr::include_graphics("image/maxpd.png")
 ```
 
 ---
+
+
 # Estimated mean values for AL
 ```{r, echo = FALSE, out.width=750}
 knitr::include_graphics("image/maxcal.png")
 ```
 
 ---
+
+
 # Advantages of matrix-variate regression
 - Multilevel models generally include random effects to account for component-specific covariances or correlations. The matrix-variate regression does not include random effects as the 'variability within and between variables and occasions holds through the Kronecker product covariance matrix' and no individual-varying parameters are assumed. (1)
 -  Matrix-variate analysis can be combined with multilevel models as showed in (3).
@@ -226,6 +316,8 @@ If compared with multivariate models,
 - Consider the correlations between rows and columns
 
 ---
+
+
 # Why is matrix-variate regression not popular?
 - Data with matrix-valued response are not commonly encountered until contemporary statistical applications
     + The response are universally reshaped as a vector
@@ -238,6 +330,8 @@ If compared with multivariate models,
 - Not many existing estimation packages.
 
 ---
+
+
 # Methodology extensions
 
 - Longitudinal data %%CITE ALL%%
@@ -245,6 +339,8 @@ If compared with multivariate models,
 - Missing teeth
 
 ---
+
+
 # Possible applications
 - Papermaking with n=48 samples, 4 $\times$ 5 observed matrix (4 quality variables as a function of 5 beating times) for each sample and 4 $\times$ 5 predictors (4 characteristics at 5 beating times) (1)
 - Crossover assay of insulin based on rabbit blood sugar concentration. There are a total number of 36 samples. Each subject has a 5 $\times$ 2 response matrix with 5 measurements of blood sugar on each of two days. The covariates are 2 $\times$ 2 with two rows representing standard and test treatments and two columns representing two days. (2)
@@ -253,8 +349,12 @@ If compared with multivariate models,
 - MRI data for ADHD patients and control. Each patient has a 256 $\times$ 198 $\times$ 256 (downsized to 30 $\times$ 36 $\times$ 30) 3-way tensor response. Predictors include binary group indicator, age and gender. (4)
 
 ---
+
+
 # Let's try!
 
 ---
+
+
 # Acknowledgements
 

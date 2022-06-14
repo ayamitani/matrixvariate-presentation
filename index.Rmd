@@ -189,9 +189,11 @@ Mitani et al. [Marginal analysis of multiple outcomes with informative cluster s
 knitr::include_graphics("image/teethnumbering.png")
 ```
 ]]
-.pull-right[
-PUT CORR PLOT HERE
-]
+.pull-right[.center[
+```{r, echo = FALSE, out.width=450}
+knitr::include_graphics("image/mvr_row.png")
+```
+]]
 .footnote[[https://en.wikipedia.org/wiki/Universal_Numbering_System](https://en.wikipedia.org/wiki/Universal_Numbering_System)]
 
 ---
@@ -200,9 +202,15 @@ PUT CORR PLOT HERE
 
 ---
 # Estimated mean values for PD
+```{r, echo = FALSE, out.width=750}
+knitr::include_graphics("image/maxpd.png")
+```
 
 ---
 # Estimated mean values for AL
+```{r, echo = FALSE, out.width=750}
+knitr::include_graphics("image/maxcal.png")
+```
 
 ---
 # Advantages of matrix-variate regression
@@ -247,4 +255,6 @@ If compared with multivariate models,
 ---
 # Let's try!
 
+---
+# Acknowledgements
 

@@ -133,33 +133,45 @@ where
   - $\mu (r \times m)$ is...
   - $\beta_1(r\times p_1)$ and $\beta_2 (m \times p2)$ are row and column coefficient matrices
   - $\epsilon(r\times m)$ is a matrix of errors
-%%% CITE DI AND COOK %%%
+
+.footnote[Ding and Cook. [Matrix variate regressions and envelope models](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247). J. R. Statist. Soc. B. (2018)]
 
 ---
 # Example: Periodontal disease
 .pull-left[
 + Periodontitis is the **6**th most prevalent disease in the world and a major cause of tooth loss in older adults
+
 + In Canada...
-  - 16% of adults have periodontitis
-  - 4% of adults have severe periodontitis
+  
+  - **16**% of adults have periodontitis
+  
+  - **4**% of adults have severe periodontitis
 ]
 .pull-right[
-![https://doi.org/10.1289/ehp.0800312](image/perio.jpg)
+```{r, echo = FALSE, out.width=300}
+knitr::include_graphics("image/perio.jpg")
+```
 ]
 
 ---
 # Two measurements collected on each tooth
 
 .pull-left[
-![https://doi.org/10.1289/ehp.0800312](image/tooth.jpg)
+```{r, echo = FALSE, out.width=400}
+knitr::include_graphics("image/tooth.jpg")
+```
 ]
 .pull-right[
 - AAP/CDC definition of periodontitis
   <!-- + Mild: 2+ sites with **CAL** $\geq$ 3mm, and 2+ sites with **PD** $\geq$ 4mm or 1 site with **PD** $\geq$ 5mm -->
   <!-- + Moderate: 2+ sites with **CAL** $\geq$ 4mm, or 2+ sites with **PD** $\geq$ 5mm  -->
+
   + Severe: two or more sites with **CAL** $\geq$ 6mm, and one or more site with **PD** $\geq$ 5mm
+
 - Many researchers are also interested in *jointly* modeling **CAL** and **PD** (%%% CITE KAYE AND MITANI %%%)
 ]
+
+.footnote[Kaye et al. [Matrix variate regressions and envelope models](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247). J. R. Statist. Soc. B. (2018)]
 
 
 
@@ -169,17 +181,29 @@ where
 %%% WRITE OUT THE MODEL HERE %%%
 
 ---
-# Predicted values 
+# Correlation between teeth
+.pull-left[
+```{r, echo = FALSE, out.width=300}
+knitr::include_graphics("image/teethnumbering.png")
+```
+]
+.pull-right[
+PUT CORR PLOT HERE
+]
 
 ---
-# Correlation plot
+# Estimated mean values for PD
+
+---
+# Estimated mean values for CAL
+
 
 ---
 # Methodology extensions
 
 - Longitudinal data %%CITE ALL%%
 - Non-normal errors 
-- Missing tooth
+- Missing teeth
 
 ---
 # Possible applications

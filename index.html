@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Aya Mitani" />
     <meta name="author" content="Dalla Lana School of Public Health" />
-    <meta name="date" content="2022-06-12" />
+    <meta name="date" content="2022-06-14" />
     <script src="index_files/header-attrs/header-attrs.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## DSI Seed Funding for Methodologists
 ### Aya Mitani
 ### Dalla Lana School of Public Health
-### 2022-06-12
+### 2022-06-14
 
 ---
 
@@ -112,33 +112,41 @@ where
   - `\(\mu (r \times m)\)` is...
   - `\(\beta_1(r\times p_1)\)` and `\(\beta_2 (m \times p2)\)` are row and column coefficient matrices
   - `\(\epsilon(r\times m)\)` is a matrix of errors
-%%% CITE DI AND COOK %%%
+
+.footnote[Ding and Cook. [Matrix variate regressions and envelope models](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247). J. R. Statist. Soc. B. (2018)]
 
 ---
 # Example: Periodontal disease
 .pull-left[
 + Periodontitis is the **6**th most prevalent disease in the world and a major cause of tooth loss in older adults
+
 + In Canada...
-  - 16% of Canadian adults have periodontitis
-  - 4% of Canadian adults have severe periodontitis
+  
+  - **16**% of adults have periodontitis
+  
+  - **4**% of adults have severe periodontitis
 ]
 .pull-right[
-![https://doi.org/10.1289/ehp.0800312](image/perio.jpg)
+&lt;img src="image/perio.jpg" width="300" /&gt;
 ]
 
 ---
 # Two measurements collected on each tooth
 
 .pull-left[
-![https://doi.org/10.1289/ehp.0800312](image/tooth.jpg)
+&lt;img src="image/tooth.jpg" width="400" /&gt;
 ]
 .pull-right[
 - AAP/CDC definition of periodontitis
   &lt;!-- + Mild: 2+ sites with **CAL** `\(\geq\)` 3mm, and 2+ sites with **PD** `\(\geq\)` 4mm or 1 site with **PD** `\(\geq\)` 5mm --&gt;
   &lt;!-- + Moderate: 2+ sites with **CAL** `\(\geq\)` 4mm, or 2+ sites with **PD** `\(\geq\)` 5mm  --&gt;
+
   + Severe: two or more sites with **CAL** `\(\geq\)` 6mm, and one or more site with **PD** `\(\geq\)` 5mm
+
 - Many researchers are also interested in *jointly* modeling **CAL** and **PD** (%%% CITE KAYE AND MITANI %%%)
 ]
+
+.footnote[Kaye et al. [Matrix variate regressions and envelope models](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247). J. R. Statist. Soc. B. (2018)]
 
 
 
@@ -148,17 +156,27 @@ where
 %%% WRITE OUT THE MODEL HERE %%%
 
 ---
-# Predicted values 
+# Correlation plot
+.pull-left[
+&lt;img src="image/teethnumbering.png" width="300" /&gt;
+]
+.pull-right[
+PUT CORR PLOT HERE
+]
 
 ---
-# Correlation plot
+# Estimated mean values for PD
+
+---
+# Estimated mean values for CAL
+
 
 ---
 # Methodology extensions
 
-- Longitudinal data
-- Non-normal errors
-- Missing tooth
+- Longitudinal data %%CITE ALL%%
+- Non-normal errors 
+- Missing teeth
 
 ---
 # Possible applications
@@ -167,7 +185,7 @@ where
 # Advantages of matrix-variate regression
 
 ---
-# Why is matrix-variate regression unpopular?
+# Why is matrix-variate regression not popular?
 
 ---
 # Let's try!

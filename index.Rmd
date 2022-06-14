@@ -147,56 +147,87 @@ where
   
   - **4**% of adults have severe periodontitis
 ]
-.pull-right[
+.pull-right[.center[
 ```{r, echo = FALSE, out.width=300}
 knitr::include_graphics("image/perio.jpg")
 ```
-]
+]]
 
 ---
 # Two measurements collected on each tooth
 
-.pull-left[
+.pull-left[.center[
 ```{r, echo = FALSE, out.width=400}
 knitr::include_graphics("image/tooth.jpg")
 ```
-]
+]]
 .pull-right[
-- AAP/CDC definition of periodontitis
-  <!-- + Mild: 2+ sites with **CAL** $\geq$ 3mm, and 2+ sites with **PD** $\geq$ 4mm or 1 site with **PD** $\geq$ 5mm -->
-  <!-- + Moderate: 2+ sites with **CAL** $\geq$ 4mm, or 2+ sites with **PD** $\geq$ 5mm  -->
+- AAP/CDC definition of severe periodontitis
+  <!-- + Mild: 2+ sites with **AL** $\geq$ 3mm, and 2+ sites with **PD** $\geq$ 4mm or 1 site with **PD** $\geq$ 5mm -->
+  <!-- + Moderate: 2+ sites with **AL** $\geq$ 4mm, or 2+ sites with **PD** $\geq$ 5mm  -->
 
-  + Severe: two or more sites with **CAL** $\geq$ 6mm, and one or more site with **PD** $\geq$ 5mm
+> two or more sites with **AL** $\geq$ 6mm and one or more site with **PD** $\geq$ 5mm
 
-- Many researchers are also interested in *jointly* modeling **CAL** and **PD** (%%% CITE KAYE AND MITANI %%%)
+- Many researchers are also interested in *jointly* modeling **AL** and **PD** 
 ]
 
-.footnote[Kaye et al. [Matrix variate regressions and envelope models](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247). J. R. Statist. Soc. B. (2018)]
+.footnote[Kaye et al. [Metabolic Syndrome and Periodontal Disease Progression in Men](https://doi.org/10.1177/0022034516641053). J. Dent. Res. (2016)       
+Mitani et al. [Marginal analysis of multiple outcomes with informative cluster size](http://onlinelibrary.wiley.com/doi/abs/10.1111/biom.13241). Biometrics. (2021)
+]
 
 
 
 ---
-# Matrix-variate model for CAL and PD
+# Matrix-variate model for AL and PD
 
 %%% WRITE OUT THE MODEL HERE %%%
 
 ---
-# Correlation between teeth
-.pull-left[
-```{r, echo = FALSE, out.width=300}
+# Estimated correlation between teeth
+.pull-left[.center[ 
+```{r, echo = FALSE, out.width=250, fig.cap="Teeth numbering system"}
 knitr::include_graphics("image/teethnumbering.png")
 ```
-]
+]]
 .pull-right[
 PUT CORR PLOT HERE
 ]
+.footnote[[https://en.wikipedia.org/wiki/Universal_Numbering_System](https://en.wikipedia.org/wiki/Universal_Numbering_System)]
+
+---
+# Estimated correlation between AL and PD
+
 
 ---
 # Estimated mean values for PD
 
 ---
-# Estimated mean values for CAL
+# Estimated mean values for AL
 
+---
+# Advantages of matrix-variate regression
+- Multilevel models generally include random effects to account for component-specific covariances or correlations. The matrix-variate regression does not include random effects as the 'variability within and between variables and occasions holds through the Kronecker product covariance matrix' and no individual-varying parameters are assumed. (1)
+-  Matrix-variate analysis can be combined with multilevel models as showed in (3).
+
+
+If compared with multivariate models, 
+- More general without unfolding modes of the three-way data structure.
+- Consider both time-dependent and independent covariates and time-dependent responses.
+- More realistic situation and more general inferential framework
+- Reduced number of estimated parameters
+- Consider the correlations between rows and columns
+
+---
+# Why is matrix-variate regression not popular?
+- Data with matrix-valued response are not commonly encountered until contemporary statistical applications
+    + The response are universally reshaped as a vector
+    + We have traditional longitudinal models for vector-valued responses.
+
+- High-dimensional data may have sparsity and require regularization. 
+
+- Computation and interpretation might be complicated when incorporating row and column covariances.
+
+- Not many existing estimation packages.
 
 ---
 # Methodology extensions
@@ -207,12 +238,11 @@ PUT CORR PLOT HERE
 
 ---
 # Possible applications
-
----
-# Advantages of matrix-variate regression
-
----
-# Why is matrix-variate regression not popular?
+- Papermaking with n=48 samples, 4 $\times$ 5 observed matrix (4 quality variables as a function of 5 beating times) for each sample and 4 $\times$ 5 predictors (4 characteristics at 5 beating times) (1)
+- Crossover assay of insulin based on rabbit blood sugar concentration. There are a total number of 36 samples. Each subject has a 5 $\times$ 2 response matrix with 5 measurements of blood sugar on each of two days. The covariates are 2 $\times$ 2 with two rows representing standard and test treatments and two columns representing two days. (2)
+- Electroencephalogram data. There are 122 subjects. Each subject has measurements of electrical scalp activity as a 256 $\times$ 54 matrix and the predictor is univariate binary.(2,4)
+- Physical activity of individuals diagnosed with congestive heart failure over a 4- to 9- period. Each subject i has a 7 $\times$ 144 matrix for each week. (3)
+- MRI data for ADHD patients and control. Each patient has a 256 $\times$ 198 $\times$ 256 (downsized to 30 $\times$ 36 $\times$ 30) 3-way tensor response. Predictors include binary group indicator, age and gender. (4)
 
 ---
 # Let's try!

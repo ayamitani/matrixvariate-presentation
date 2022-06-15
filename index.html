@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Aya Mitani" />
     <meta name="author" content="Dalla Lana School of Public Health" />
-    <meta name="date" content="2022-06-14" />
+    <meta name="date" content="2022-06-15" />
     <script src="index_files/header-attrs/header-attrs.js"></script>
     <link rel="stylesheet" href="adjusted-themer.css" type="text/css" />
   </head>
@@ -25,6 +25,8 @@
 
 
 .center[
+
+
 # Matrix-variate regression for multilevel data
 
 ## DSI Seed Funding for Methodologists  
@@ -33,7 +35,7 @@
 
 ### Dalla Lana School of Public Health
 
-### 2022-06-14
+### 2022-06-15
 ]
 
 .pull-left[.center[
@@ -115,20 +117,20 @@ For example,
 
 # Matrix-variate regression
 - Then, rather than transforming each `\(\boldsymbol{Y}_i\)` into a vector, it may be more straightforward to model `\(\boldsymbol{Y}_1\)`, `\(\boldsymbol{Y}_2\)`, ..., `\(\boldsymbol{Y}_n\)` as matrices
-&lt;br&gt;
+&lt;br/&gt;
 --
 
 - The matrix-variate regression of `\(\boldsymbol{Y} (r \times m)\)` on `\(\boldsymbol{X} (p1 \times p2)\)` is
-&lt;br&gt;
+&lt;br/&gt;
 --
 
 `\begin{equation}
 \mathbf{Y = \mu + \beta_1 X \beta_2^T + \epsilon}
 \end{equation}`
 where 
-  - `\(\mu (r \times m)\)` is...
+  - `\(\mu (r \times m)\)` is matrix of the means ($\bar{\boldsymbol{Y}}$)
   - `\(\beta_1(r\times p_1)\)` and `\(\beta_2 (m \times p2)\)` are row and column coefficient matrices
-  - `\(\epsilon(r\times m)\)` is a matrix of errors
+  - `\(\epsilon(r\times m)\)` is a matrix of errors with a matrix normal distribution
 
 .footnote[Ding and Cook. [Matrix variate regressions and envelope models](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247). J. R. Statist. Soc. B. (2018)]
 
@@ -179,7 +181,9 @@ Mitani et al. [Marginal analysis of multiple outcomes with informative cluster s
 
 # Matrix-variate model for AL and PD
 
-For each subject, `\(\boldsymbol{Y}( 28 \times 2)\)` include AL and PD data for 28 teeth. `\(\boldsymbol{X} (2 \times 1)\)` include age and indicator for smoking.
+For each subject
+- `\(\boldsymbol{Y}( 28 \times 2)\)` includes AL and PD data for 28 teeth
+- `\(\boldsymbol{X} (2 \times 1)\)` includes age and indicator for smoking
 
 `\begin{equation*}
 \left(\begin{array}{cc} 
@@ -217,7 +221,7 @@ For each subject, `\(\boldsymbol{Y}( 28 \times 2)\)` include AL and PD data for 
 \beta_{2\_11}\\
 \beta_{2\_21} 
 \end{array}\right)^T +
-\epsilon
+\boldsymbol{\epsilon}
 \end{equation*}`
 
 ---
@@ -248,71 +252,94 @@ For each subject, `\(\boldsymbol{Y}( 28 \times 2)\)` include AL and PD data for 
 
 
 # Estimated mean values for PD
+.center[
 &lt;img src="image/maxpd.png" width="750" /&gt;
-
+]
 ---
 
 
 # Estimated mean values for AL
+.center[
 &lt;img src="image/maxcal.png" width="750" /&gt;
-
+]
 ---
 
 
 # Advantages of matrix-variate regression
-- Multilevel models generally include random effects to account for component-specific covariances or correlations. The matrix-variate regression does not include random effects as the 'variability within and between variables and occasions holds through the Kronecker product covariance matrix' and no individual-varying parameters are assumed. (1)
--  Matrix-variate analysis can be combined with multilevel models as showed in (3).
+- Multilevel models generally include random effects to account for the correlations 
 
+  + Matrix-variate regression does not include random effects
+  
+  + Variability within and between variables and occasions holds through the covariance matrix of the error term
+  
+  + No individual-varying parameters are assumed
+  
+- Matrix-variate analysis can be combined with multilevel models
 
-If compared with multivariate models, 
-- More general without unfolding modes of the three-way data structure.
-- Consider both time-dependent and independent covariates and time-dependent responses.
-- More realistic situation and more general inferential framework
-- Reduced number of estimated parameters
+- Consider both time-dependent and independent covariates and time-dependent responses
+
+- Flexible and parsimonious
+
 - Consider the correlations between rows and columns
 
 ---
 
 
 # Why is matrix-variate regression not popular?
-- Data with matrix-valued response are not commonly encountered until contemporary statistical applications
-    + The response are universally reshaped as a vector
-    + We have traditional longitudinal models for vector-valued responses.
+- Data with matrix-valued response were not commonly encountered until contemporary statistical applications
 
-- High-dimensional data may have sparsity and require regularization. 
+  + The response are universally reshaped as a vector
+    
+  + We have traditional longitudinal models for vector-valued responses.
 
-- Computation and interpretation might be complicated when incorporating row and column covariances.
+- High-dimensional data may have sparsity and require regularization
 
-- Not many existing estimation packages.
+- Computation and interpretation might be complicated when incorporating row and column covariance
+
+- Not many existing estimation packages
 
 ---
 
 
 # Methodology extensions
 
-- Longitudinal data %%CITE ALL%%
+- Longitudinal data 
+
+- More dimensions
+
 - Non-normal errors 
-- Missing teeth
+
+- Missing data
 
 ---
 
 
-# Possible applications
-- Papermaking with n=48 samples, 4 `\(\times\)` 5 observed matrix (4 quality variables as a function of 5 beating times) for each sample and 4 `\(\times\)` 5 predictors (4 characteristics at 5 beating times) (1)
-- Crossover assay of insulin based on rabbit blood sugar concentration. There are a total number of 36 samples. Each subject has a 5 `\(\times\)` 2 response matrix with 5 measurements of blood sugar on each of two days. The covariates are 2 `\(\times\)` 2 with two rows representing standard and test treatments and two columns representing two days. (2)
-- Electroencephalogram data. There are 122 subjects. Each subject has measurements of electrical scalp activity as a 256 `\(\times\)` 54 matrix and the predictor is univariate binary.(2,4)
-- Physical activity of individuals diagnosed with congestive heart failure over a 4- to 9- period. Each subject i has a 7 `\(\times\)` 144 matrix for each week. (3)
-- MRI data for ADHD patients and control. Each patient has a 256 `\(\times\)` 198 `\(\times\)` 256 (downsized to 30 `\(\times\)` 36 `\(\times\)` 30) 3-way tensor response. Predictors include binary group indicator, age and gender. (4)
+# Applications
+- **Papermaking**: 4 `\(\times\)` 5 matrix `\(\boldsymbol{Y}\)` (4 quality variables as a function of 5 beating times) for each sample and 4 `\(\times\)` 5 matrix `\(\boldsymbol{X}\)` (4 characteristics at 5 beating times) [[Viroli. (2012)](https://linkinghub.elsevier.com/retrieve/pii/S0047259X12000966)]
 
----
+- **Crossover assay** of insulin based on rabbit blood sugar concentration: Each subject has a 5 `\(\times\)` 2 matrix `\(\boldsymbol{Y}\)` (5 measurements of blood sugar on each of two days) and 2 `\(\times\)` 2 matrix `\(\boldsymbol{X}\)` (two rows representing standard and test treatments and two columns representing two days) [[Ding and Cook. (2018)](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247)]
 
+- **Electroencephalogram data**: Each subject has measurements of electrical scalp activity as a 256 `\(\times\)` 54 matrix `\(\boldsymbol{Y}\)` and the predictor is binary [[Ding and Cook. (2018)](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247)]
 
-# Let's try!
+- **Longitudinal Study of Aging Danish Twins**: Each twin pair has 3 `\(\times\)` 2 matrix `\(\boldsymbol{Y}\)` (3 responses measuring cognitive function for each ]member of the twin) and multiple covariates related to cognitive function [[Anderlucci et al. (2014)](https://doi.org/10.6092/issn.1973-2201/5473)]
 
 ---
 
 
 # Acknowledgements
+.pull-left[.center[
+&lt;div class="figure"&gt;
+&lt;img src="image/Shiyao.jpg" alt="Shiyao Ying, PhD student in Biostatistics" width="300" /&gt;
+&lt;p class="caption"&gt;Shiyao Ying, PhD student in Biostatistics&lt;/p&gt;
+&lt;/div&gt;
+]]
+.pull-right[.center[
+&lt;img src="image/dsi.png" width="500" /&gt;
+&lt;div class="figure"&gt;
+&lt;img src="image/dipankar.png" alt="Dipankar Bandyopadhyay at VCU" width="150" /&gt;
+&lt;p class="caption"&gt;Dipankar Bandyopadhyay at VCU&lt;/p&gt;
+&lt;/div&gt;
+]]
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
@@ -363,19 +390,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
-// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
-// screen reader (see PR #262)
-(function(d) {
-  let res = {};
-  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
-    const t = tr.querySelector('td:nth-child(2)').innerText;
-    tr.querySelectorAll('td:first-child .key').forEach(key => {
-      const k = key.innerText;
-      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
-    });
-  });
-  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
-})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

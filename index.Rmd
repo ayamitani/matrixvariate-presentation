@@ -4,7 +4,7 @@ subtitle: "DSI Seed Funding for Methodologists"
 author: 
   - "Aya Mitani"
   - "Dalla Lana School of Public Health"
-date: '`r Sys.Date()`'
+date: '2022-06-16'
 output:
   xaringan::moon_reader:
     css: adjusted-themer.css
@@ -146,7 +146,8 @@ y_{r1} & y_{r2} & ... & y_{rm}
 \end{equation*}
 
 For example,
-- 
+- Data with repeated measures
+- Imaging data
 
 ---
 
@@ -285,10 +286,6 @@ knitr::include_graphics("image/mvr_row.png")
 ---
 
 
-# Estimated correlation between AL and PD
-
-
----
 
 
 # Estimated mean values for PD
@@ -385,3 +382,9 @@ knitr::include_graphics("image/dipankar.png")
 ```
 ]]
 
+---
+# Thank you
+
+- Slides are available at: https://github.com/ayamitani/matrixvariate-presentation
+
+- I can be reached at: aya.mitani@utoronto.ca

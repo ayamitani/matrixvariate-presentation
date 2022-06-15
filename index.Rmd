@@ -218,7 +218,7 @@ Mitani et al. [Marginal analysis of multiple outcomes with informative cluster s
 
 # Matrix-variate model for AL and PD
 
-For subject 1,
+For each subject, $\boldsymbol{Y}( 28 \times 2)$ include AL and PD data for 28 teeth. $\boldsymbol{X} (2 \times 1)$ include age and indicator for smoking.
 
 \begin{equation*}
 \left(\begin{array}{cc} 

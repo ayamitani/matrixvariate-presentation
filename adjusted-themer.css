@@ -308,4 +308,6 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
 .bg-black {
   background-color: var(--black);
 }
-
+.smallerfont {
+  font-size: 1rem;
+}

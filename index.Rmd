@@ -156,7 +156,7 @@ For example,
 <br/>
 --
 
-- The matrix-variate regression of $\boldsymbol{Y} (r \times m)$ on $\boldsymbol{X} (p1 \times p2)$ is
+- The matrix-variate regression of $\boldsymbol{Y} (r \times m)$ on $\boldsymbol{X} (p_1 \times p_2)$ is
 <br/>
 --
 
@@ -164,8 +164,8 @@ For example,
 \mathbf{Y = \mu + \beta_1 X \beta_2^T + \epsilon}
 \end{equation}
 where 
-  - $\mu (r \times m)$ is matrix of the means ($\bar{\boldsymbol{Y}}$)
-  - $\beta_1(r\times p_1)$ and $\beta_2 (m \times p2)$ are row and column coefficient matrices
+  - $\mu (r \times m)$ is the matrix of the means $\bar{\boldsymbol{Y}}$
+  - $\beta_1(r\times p_1)$ and $\beta_2 (m \times p_2)$ are row and column coefficient matrices
   - $\epsilon(r\times m)$ is a matrix of errors with a matrix normal distribution
 
 .footnote[Ding and Cook. [Matrix variate regressions and envelope models](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247). J. R. Statist. Soc. B. (2018)]
@@ -309,11 +309,13 @@ knitr::include_graphics("image/maxcal.png")
 # Advantages of matrix-variate regression
 - Multilevel models generally include random effects to account for the correlations 
 
+  .smallerfont[
   + Matrix-variate regression does not include random effects
   
-  + Variability within and between variables and occasions holds through the covariance matrix of the error term
++ Variability within and between variables and occasions holds through the covariance matrix of the error term
   
-  + No individual-varying parameters are assumed
++ No individual-varying parameters are assumed]
+  
   
 - Matrix-variate analysis can be combined with multilevel models
 

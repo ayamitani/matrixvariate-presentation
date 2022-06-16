@@ -319,11 +319,11 @@ knitr::include_graphics("image/maxcal.png")
   
 - Matrix-variate analysis can be combined with multilevel models
 
-- Consider both time-dependent and independent covariates and time-dependent responses
+- Can include both time-dependent and independent covariates 
 
 - Flexible and parsimonious
 
-- Consider the correlations between rows and columns
+- Considers the correlations between rows and columns
 
 ---
 

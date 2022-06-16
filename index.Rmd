@@ -329,15 +329,15 @@ knitr::include_graphics("image/maxcal.png")
 
 
 # Why is matrix-variate regression not popular?
-- Data with matrix-valued response were not commonly encountered until contemporary statistical applications
+- Data with matrix-valued response were not commonly encountered until recently
+
+  + We have traditional longitudinal models for vector-valued response
 
   + The response are universally reshaped as a vector
     
-  + We have traditional longitudinal models for vector-valued responses.
-
 - High-dimensional data may have sparsity and require regularization
 
-- Computation and interpretation might be complicated when incorporating row and column covariance
+- Computation and interpretation might be complicated 
 
 - Not many existing estimation packages
 
@@ -348,7 +348,7 @@ knitr::include_graphics("image/maxcal.png")
 
 - Longitudinal data 
 
-- More dimensions
+- Matrix of higher dimensions
 
 - Non-normal errors 
 
@@ -364,7 +364,7 @@ knitr::include_graphics("image/maxcal.png")
 
 - **Electroencephalogram data**: Each subject has measurements of electrical scalp activity as a 256 $\times$ 54 matrix $\boldsymbol{Y}$ and the predictor is binary [[Ding and Cook. (2018)](http://onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12247)]
 
-- **Longitudinal Study of Aging Danish Twins**: Each twin pair has 3 $\times$ 2 matrix $\boldsymbol{Y}$ (3 responses measuring cognitive function for each ]member of the twin) and multiple covariates related to cognitive function [[Anderlucci et al. (2014)](https://doi.org/10.6092/issn.1973-2201/5473)]
+- **Longitudinal Study of Aging Danish Twins**: Each twin pair has 3 $\times$ 2 matrix $\boldsymbol{Y}$ (3 responses measuring cognitive function for each member of the twin) and multiple covariates related to cognitive function [[Anderlucci et al. (2014)](https://doi.org/10.6092/issn.1973-2201/5473)]
 
 ---
 
